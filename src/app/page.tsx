@@ -78,7 +78,7 @@ export default function Home() {
     const textBox1 = textBox1Ref.current;
     const countTime = countTime_to.current;
 
-    startListening(progress2, textBox2, loading2, textBox1, countTime, targetFromLanguage);
+    startListening(progress2, textBox2, loading2, textBox1, countTime, targetFromLanguage, selectedToLanguage);
   };
 
   const handleClickFrom = () => {
@@ -86,9 +86,9 @@ export default function Home() {
     const textBox1 = textBox1Ref.current;
     const loading1 = loading1Ref.current;
     const textBox2 = textBox2Ref.current;
-    const counTime = countTime_From.current;
+    const countTime = countTime_From.current;
 
-    startListening(progress1, textBox1, loading1, textBox2, counTime, targetToLanguage);
+    startListening(progress1, textBox1, loading1, textBox2, countTime, targetToLanguage, selectedFromLanguage);
   };
 
   const startListening = (
@@ -97,7 +97,8 @@ export default function Home() {
     loading: any,
     res_textbox: any,
     countTime: any,
-    targetLanguage: string
+    targetLanguage: string,
+    selectedLanguageCode : string
   ) => {
     var count: number = 19;
 
@@ -175,7 +176,7 @@ export default function Home() {
         resetTranscript();
         SpeechRecognition.startListening({
           continuous: true,
-          language: selectedFromLanguage,
+          language: selectedLanguageCode,
         });
       }
     }
